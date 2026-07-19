@@ -1,29 +1,87 @@
-# Sai Drama Film Producer
+# 🎬 Sai Drama Film Producer
 
-AI-produced **vertical drama short films** — an end-to-end pipeline that turns a written story into a finished 9:16 film: production bible → consistent character & location references → AI video generation (Seedance) → score & assembly.
+An end-to-end pipeline that turns a **written story** into a finished, emotionally-driven **9:16 vertical drama film** — fully AI-produced, with consistent characters, consistent locations, real brand assets, an original score, and a clean final cut.
 
-Every character and location is kept on-model across shots via multi-angle reference sheets, and brand logos are composited as real assets (never AI-reinterpreted).
+Written story ➜ **Production Bible** ➜ **Consistent reference assets** ➜ **AI video generation** ➜ **Score & assembly** ➜ **Final film**
 
 ---
 
-## 🎬 Sample Films
+## ✨ Sample Films
 
 ### Keep It — 2:37
-A woman's journey from a childhood of *"never good enough"* to building her dream: a floating-garden public library — validated and executed with Sai.
+An East-Asian woman's journey from a childhood of *"never good enough"* to building her dream: a floating-garden public library — a vision she validates and executes with Sai. A story about self-doubt, vindication, and passing courage forward.
 
 https://github.com/zening-cmd/Sai-drama-film-producer/raw/main/samples/Keep-It-final.mp4
 
-▶️ [Watch / download Keep-It-final.mp4](https://github.com/zening-cmd/Sai-drama-film-producer/raw/main/samples/Keep-It-final.mp4) · 9:16 · 720×1280 · ~30 MB
-
----
+▶️ [Watch / download Keep-It-final.mp4](https://github.com/zening-cmd/Sai-drama-film-producer/raw/main/samples/Keep-It-final.mp4) &nbsp;·&nbsp; 9:16 &nbsp;·&nbsp; 720×1280 &nbsp;·&nbsp; ~30 MB &nbsp;·&nbsp; 11 shots
 
 ### One More Life
 An AI-generated vertical drama short produced with the same pipeline.
 
 https://github.com/zening-cmd/Sai-drama-film-producer/raw/main/samples/ONE_MORE_LIFE.mp4
 
-▶️ [Watch / download ONE_MORE_LIFE.mp4](https://github.com/zening-cmd/Sai-drama-film-producer/raw/main/samples/ONE_MORE_LIFE.mp4) · 9:16 · ~31 MB
+▶️ [Watch / download ONE_MORE_LIFE.mp4](https://github.com/zening-cmd/Sai-drama-film-producer/raw/main/samples/ONE_MORE_LIFE.mp4) &nbsp;·&nbsp; 9:16 &nbsp;·&nbsp; ~31 MB
+
+> If a player doesn't appear inline on your device, use the download link — GitHub's inline video depends on browser/codec support.
 
 ---
 
-*If a video doesn't play inline on your device, use the download link — GitHub inline players depend on browser/codec support.*
+## 🛠️ The Production Pipeline
+
+### 1. Production Bible
+The foundation. The raw story is rewritten into a **dramatically engineered script**, then broken into fully buildable assets:
+- **Script engineering** — sharpened conflict, clear antagonists, a turning-point beat, escalating stakes, and a preserved ending.
+- **Location Bible** — every distinct set defined once (LOC-A…F) so it can be re-referenced consistently.
+- **`voice-profiles.json`** — a structured voice/delivery profile per character.
+- **Per-clip prompts** — each shot gets a self-contained **image prompt** + **video prompt** covering 7 mandatory items: appearance/wardrobe, location & spatial layout, lighting/grade, camera/lens, blocking, dialogue + delivery, and SFX/ambient.
+- **Expansion tokens** (`{{LOOK}}`, `{{MEI_ADULT}}`, …) — shared snippets injected into every prompt so wardrobe, faces, and grade stay identical across shots.
+
+### 2. Reference Asset Generation
+Before a single frame of video, we generate the visual "cast & sets":
+- **Character turnaround sheets** — 5 angles per character on a neutral studio background.
+- **Location composite sheets** — multi-angle spatial references, no people.
+- **Props** — hero objects reused across shots (e.g. a child's crayon drawing, an exam sheet).
+- **Brand-UI screens** — in-story app screens with the **real logo composited as an asset** (never AI-reinterpreted).
+- **Anti-face-filter grid** — a faint 8px grid overlay is baked onto each character sheet so the video model's face filter doesn't block clips; it renders invisibly in the final video.
+
+### 3. Filter Probe
+A cheap 4-second test clip validates the whole chain (image ➜ CDN upload ➜ video gen ➜ face filter ➜ download) **before** committing to expensive full renders.
+
+### 4. Clip Generation
+Each shot is rendered from its reference sheets + location + prompt, at **9:16 / 720p**, with lip-synced dialogue and SFX. Consistency rules: ≤2 faces per clip, grid-ignore + single-scene instructions, no music baked into video-gen prompts.
+
+### 5. Score
+An original **cinematic piano + strings** score follows the emotional arc — somber ➜ hopeful ➜ triumphant.
+
+### 6. Assembly
+All clips are normalized and concatenated, the score is mixed **under** the dialogue (with fades), and a **branded end-card** is appended.
+
+### 7. Export
+A single H.264/AAC `.mp4`, ready for vertical platforms.
+
+---
+
+## 🎯 Consistency Techniques
+- **Expansion tokens** keep wardrobe/appearance/grade identical across every shot.
+- **Multi-angle reference sheets** lock character and location identity.
+- **Anti-face-filter grid overlay** passes photorealistic faces through the video model.
+- **Brand assets composited as-is** — logos are never regenerated by AI.
+
+## 🧰 Tech Stack
+- **Video:** Seedance 2.0 (via fal.ai) — reference-to-video, 9:16, with audio
+- **Images:** GPT-Image (via fal.ai) — character/location/prop/UI references
+- **Music:** MiniMax Music (via fal.ai) — instrumental score
+- **Assembly:** ffmpeg — normalize, concat, mix, end-card, export
+
+## 📁 Repo Structure
+```
+samples/
+  Keep-It-final.mp4      # 2:37 vertical drama short
+  ONE_MORE_LIFE.mp4      # vertical drama short
+README.md
+LICENSE
+```
+
+---
+
+*Produced with [Sai](https://simular.ai) — the autonomous computer assistant by Simular.*
