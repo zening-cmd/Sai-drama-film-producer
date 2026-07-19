@@ -1,4 +1,4 @@
-<h1 align="center">🎬 Sai AI Video Drama</h1>
+<h1 align="center">🎬 AI Video Drama Creation</h1>
 
 <p align="center"><b>Turn <em>one simple prompt</em> into a finished, coherent, cinematic AI-generated short drama — with <em>zero manual video editing.</em></b></p>
 
