@@ -1,87 +1,114 @@
-# 🎬 Sai Drama Film Producer
+<h1 align="center">🎬 Sai AI Video Drama</h1>
 
-An end-to-end pipeline that turns a **written story** into a finished, emotionally-driven **9:16 vertical drama film** — fully AI-produced, with consistent characters, consistent locations, real brand assets, an original score, and a clean final cut.
+<p align="center"><b>Turn <em>one simple prompt</em> into a finished, coherent, cinematic AI-generated short drama — with <em>zero manual video editing.</em></b></p>
 
-Written story ➜ **Production Bible** ➜ **Consistent reference assets** ➜ **AI video generation** ➜ **Score & assembly** ➜ **Final film**
+<p align="center">
+  <a href="./LICENSE"><img alt="License: Apache 2.0" src="https://img.shields.io/badge/License-Apache_2.0-blue.svg"></a>
+  <img alt="Format" src="https://img.shields.io/badge/output-9%3A16%20vertical-ff4b4b">
+  <img alt="Pipeline" src="https://img.shields.io/badge/pipeline-prompt%20%E2%86%92%20film-brightgreen">
+  <img alt="Models" src="https://img.shields.io/badge/models-Seedance%202.0%20%C2%B7%20GPT%20Image%202%20%C2%B7%20MiniMax-8957e5">
+</p>
 
----
-
-## ✨ Sample Films
-
-### Keep It — 2:37
-An East-Asian woman's journey from a childhood of *"never good enough"* to building her dream: a floating-garden public library — a vision she validates and executes with Sai. A story about self-doubt, vindication, and passing courage forward.
-
-https://github.com/zening-cmd/Sai-drama-film-producer/raw/main/samples/Keep-It-final.mp4
-
-▶️ [Watch / download Keep-It-final.mp4](https://github.com/zening-cmd/Sai-drama-film-producer/raw/main/samples/Keep-It-final.mp4) &nbsp;·&nbsp; 9:16 &nbsp;·&nbsp; 720×1280 &nbsp;·&nbsp; ~30 MB &nbsp;·&nbsp; 11 shots
-
-### One More Life
-An AI-generated vertical drama short produced with the same pipeline.
-
-https://github.com/zening-cmd/Sai-drama-film-producer/raw/main/samples/ONE_MORE_LIFE.mp4
-
-▶️ [Watch / download ONE_MORE_LIFE.mp4](https://github.com/zening-cmd/Sai-drama-film-producer/raw/main/samples/ONE_MORE_LIFE.mp4) &nbsp;·&nbsp; 9:16 &nbsp;·&nbsp; ~31 MB
-
-> If a player doesn't appear inline on your device, use the download link — GitHub's inline video depends on browser/codec support.
+<p align="center">A reusable <a href="https://simular.ai">Sai</a> skill that orchestrates image, reference-to-video, and music models into one repeatable pipeline for short-form narrative video — especially TikTok-style vertical drama.</p>
 
 ---
 
-## 🛠️ The Production Pipeline
+## ✨ See it in action
 
-### 1. Production Bible
-The foundation. The raw story is rewritten into a **dramatically engineered script**, then broken into fully buildable assets:
-- **Script engineering** — sharpened conflict, clear antagonists, a turning-point beat, escalating stakes, and a preserved ending.
-- **Location Bible** — every distinct set defined once (LOC-A…F) so it can be re-referenced consistently.
-- **`voice-profiles.json`** — a structured voice/delivery profile per character.
-- **Per-clip prompts** — each shot gets a self-contained **image prompt** + **video prompt** covering 7 mandatory items: appearance/wardrobe, location & spatial layout, lighting/grade, camera/lens, blocking, dialogue + delivery, and SFX/ambient.
-- **Expansion tokens** (`{{LOOK}}`, `{{MEI_ADULT}}`, …) — shared snippets injected into every prompt so wardrobe, faces, and grade stay identical across shots.
+<p align="center"><i>Two complete short films, produced end-to-end by this pipeline from a prompt. Previews below autoplay (silent) — scroll down to watch either film with sound.</i></p>
 
-### 2. Reference Asset Generation
-Before a single frame of video, we generate the visual "cast & sets":
-- **Character turnaround sheets** — 5 angles per character on a neutral studio background.
-- **Location composite sheets** — multi-angle spatial references, no people.
-- **Props** — hero objects reused across shots (e.g. a child's crayon drawing, an exam sheet).
-- **Brand-UI screens** — in-story app screens with the **real logo composited as an asset** (never AI-reinterpreted).
-- **Anti-face-filter grid** — a faint 8px grid overlay is baked onto each character sheet so the video model's face filter doesn't block clips; it renders invisibly in the final video.
+<table align="center"><tr>
+<td align="center" width="50%">
+  <img src="docs/previews/keep-it.webp" width="260" alt="Keep It — preview"><br>
+  <b>Keep It</b><br>
+  <sub>▶ <a href="https://github.com/zening-cmd/Sai-drama-film-producer/raw/main/samples/Keep-It-final.mp4">Watch full film with sound</a></sub>
+</td>
+<td align="center" width="50%">
+  <img src="docs/previews/one-more-life.webp" width="260" alt="One More Life — preview"><br>
+  <b>One More Life</b><br>
+  <sub>▶ <a href="https://github.com/zening-cmd/Sai-drama-film-producer/raw/main/samples/ONE_MORE_LIFE.mp4">Watch full film with sound</a></sub>
+</td>
+</tr></table>
 
-### 3. Filter Probe
-A cheap 4-second test clip validates the whole chain (image ➜ CDN upload ➜ video gen ➜ face filter ➜ download) **before** committing to expensive full renders.
+### ▶️ Watch with sound
 
-### 4. Clip Generation
-Each shot is rendered from its reference sheets + location + prompt, at **9:16 / 720p**, with lip-synced dialogue and SFX. Consistency rules: ≤2 faces per clip, grid-ignore + single-scene instructions, no music baked into video-gen prompts.
-
-### 5. Score
-An original **cinematic piano + strings** score follows the emotional arc — somber ➜ hopeful ➜ triumphant.
-
-### 6. Assembly
-All clips are normalized and concatenated, the score is mixed **under** the dialogue (with fades), and a **branded end-card** is appended.
-
-### 7. Export
-A single H.264/AAC `.mp4`, ready for vertical platforms.
+<table><tr>
+<td width="50%"><b>Keep It</b><br><video src="https://github.com/zening-cmd/Sai-drama-film-producer/raw/main/samples/Keep-It-final.mp4" poster="docs/previews/keep-it-poster.jpg" controls muted width="320"></video></td>
+<td width="50%"><b>One More Life</b><br><video src="https://github.com/zening-cmd/Sai-drama-film-producer/raw/main/samples/ONE_MORE_LIFE.mp4" poster="docs/previews/one-more-life-poster.jpg" controls muted width="320"></video></td>
+</tr></table>
 
 ---
 
-## 🎯 Consistency Techniques
-- **Expansion tokens** keep wardrobe/appearance/grade identical across every shot.
-- **Multi-angle reference sheets** lock character and location identity.
-- **Anti-face-filter grid overlay** passes photorealistic faces through the video model.
-- **Brand assets composited as-is** — logos are never regenerated by AI.
+## Why it's different
 
-## 🧰 Tech Stack
-- **Video:** Seedance 2.0 (via fal.ai) — reference-to-video, 9:16, with audio
-- **Images:** GPT-Image (via fal.ai) — character/location/prop/UI references
-- **Music:** MiniMax Music (via fal.ai) — instrumental score
-- **Assembly:** ffmpeg — normalize, concat, mix, end-card, export
+- 🎬 **One prompt in, a whole drama out.** Give it a single logline and it becomes the writer — inventing characters, conflict, dialogue, and a satisfying payoff — then produces every asset through to a finished MP4. (Two quick approval checkpoints let you steer the story and the look before any expensive generation runs.)
+- 🚫 **No manual editing, ever.** No Premiere, no DaVinci, no timeline scrubbing. Assembly, subtitles, transitions, color grading, and the music mix are all done programmatically.
+- ⏱️ **No length ceiling.** Today's reference-to-video models cap a *single* generation at ~15 seconds. This pipeline treats that as a building block, not a wall — it generates many ~15s clips that stay on-model and stitches them into one continuous, full-length film. Want longer? It just orchestrates more clips.
+- 🎥 **Actually cinematic, not "AI-pretty."** A concrete film-drama recipe (real camera/lens/film-stock language, motivated lighting, film grain, explicit anti-AI negative prompts) instead of vague "make it cinematic."
+- 🔒 **Coherent by construction.** A locked "Look Bible," multi-angle reference sheets, locked generation settings/seed, and a master look anchor keep every clip consistent — so the finished film feels like one production, not a bag of mismatched clips.
 
-## 📁 Repo Structure
-```
-samples/
-  Keep-It-final.mp4      # 2:37 vertical drama short
-  ONE_MORE_LIFE.mp4      # vertical drama short
-README.md
-LICENSE
-```
+## The problem
 
----
+Generating a *single* AI video clip is easy. Generating a **multi-scene story that actually holds together** is where everything falls apart. Anyone who has tried it hits the same wall of failures:
 
-*Produced with [Sai](https://simular.ai) — the autonomous computer assistant by Simular.*
+- **Characters drift between clips** — the same person comes out with a different face, hair, or costume in every separately-generated shot.
+- **Locations morph** — a room's furniture, walls, and lighting change from angle to angle because the model re-invents whatever it can't see.
+- **Realistic faces get blocked** — reference-to-video models run a face filter that rejects photorealistic faces outright, killing the job.
+- **Footage looks "AI-pretty"** — waxy plastic skin, poreless faces, uncanny symmetry, over-polished renders that instantly read as fake.
+- **The model bolts on its own music** — reference-to-video models silently synthesize a score, fighting whatever you add later.
+- **On-screen detail comes out garbled** — logos, app UIs, screens, and readable text render as mush, the biggest authenticity tell.
+- **Silent input bugs waste money** — passing images as base64 (instead of hosted URLs) makes clips morph to black partway through.
+- **Clips are capped at ~15s** — so a longer story means stitching many separately-generated clips, which is exactly where continuity breaks down.
+- **The story doesn't land** — clips cut mid-sentence, transitions are slapped on everywhere, and the drama has no conflict, stakes, or payoff.
+
+## What this solves
+
+This skill encodes the hard-won fixes for **every** failure above into one ordered, checkpoint-gated pipeline, so coherence comes from the process instead of luck:
+
+- **Full-length film from short clips** — orchestrates and stitches many ~15s clips into one continuous drama, with seams engineered to be invisible (dialogue lands inside each clip; boundaries fall on non-speaking beats).
+- **Consistency by construction** — a locked "Look Bible," multi-angle character/location reference sheets, locked settings and seed strategy, and a master look-anchor image.
+- **A proven face-filter workaround** — a dense grid overlay on character sheets that passes the filter while the video model reconstructs clean skin beneath it, with a documented escalation ladder.
+- **A concrete cinematic recipe** — real camera/lens/film-stock language, motivated lighting, film grain, and explicit negative prompts that defeat the AI look.
+- **Audio done right** — clips are generated music-free (with explicit no-score instructions), then scored **once** at the end so music never masks dialogue.
+- **In-frame detail via image-first references** — logos, UIs, text, and props are generated/composited as finished isolated assets and passed as references, never left for the video model to invent.
+- **Drama that actually works** — deliberate story engineering: open on conflict, one clear goal + obstacle, an early "take a side" moment, a genuinely unlikable antagonist, escalating stakes, a sharp turning point, and a satisfying payoff.
+
+## The pipeline at a glance
+
+| Step | Stage | Output |
+|---|---|---|
+| **Pre** | Confirm settings (provider, resolution, aspect, runtime, fps, music mood) | Locked config |
+| **1** | Rewrite prompt/script into a **production bible** (+ locked Look Bible, voice profiles) | `production-bible.md` |
+| **2** | Generate master **reference images** (locations, character sheets, in-frame assets) | `/references/...` |
+| **3** | Generate **scene-specific character variants** | scene variants |
+| **4** | Generate **video clips** (reference-to-video, with QA + coherence checks) | `/clips/...` |
+| **5** | **Assemble** — timeline, subtitles, transitions, unifying grade | edit |
+| **6** | Generate and add **background music** (one track, in post) | `final-track.mp3` |
+| **7** | **Export** the final MP4 | `/output/final-video.mp4` |
+
+Each step is checkpoint-gated — you approve the bible and the references before any expensive clip generation happens, because bad assets compound downstream.
+
+## Models used
+
+| Role | Model | Hosted on |
+|---|---|---|
+| Reference-to-video (clips) | ByteDance **Seedance 2.0** | FAL.AI / Atlas Cloud |
+| Image generation (references) | **GPT Image 2** | FAL.AI / Atlas Cloud |
+| Background music | **MiniMax Music 2.6** | FAL.AI / Atlas Cloud |
+
+An API key for your chosen provider is required. The skill requests it securely and never stores it in plaintext.
+
+## Usage
+
+This is a **Sai skill**. Load [`SKILL.md`](./SKILL.md) in a Sai session (or import it as a skill) and describe the video you want to make in a sentence — the workflow walks through pre-production, asks for the settings it needs, and executes each step with checkpoints along the way.
+
+## Sample films
+
+Full films live in [`samples/`](./samples):
+
+- [`Keep-It-final.mp4`](./samples/Keep-It-final.mp4)
+- [`ONE_MORE_LIFE.mp4`](./samples/ONE_MORE_LIFE.mp4)
+
+## License
+
+Licensed under the [Apache License 2.0](./LICENSE).
